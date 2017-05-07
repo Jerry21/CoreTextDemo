@@ -27,4 +27,7 @@
 #define YYRGB(A,B,C)   YYRGBA(A,B,C,1.0)
 
 #import "NSObject+FrameAdjust.h"
+
 #import <CoreText/CTFrame.h>
+#import <CoreText/CTFont.h>
+#import <CoreText/CTFramesetter.h>

@@ -7,8 +7,6 @@
 //  
 
 #import "YYFrameParser.h"
-#import <CoreText/CTFont.h>
-#import <CoreText/CTFramesetter.h>
 
 @implementation YYFrameParser
 

@@ -16,7 +16,7 @@
             CFRelease(_ctFrame);
         }
         
-        CFRetain(_ctFrame);
+        CFRetain(ctFrame);
         _ctFrame = ctFrame;
     }
 }

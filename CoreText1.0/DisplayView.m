@@ -27,6 +27,8 @@
 }
 
 - (void)drawRect:(CGRect)rect {
+    
+    /*
     // 1.获得图形上下文
     CGContextRef context = UIGraphicsGetCurrentContext();
     
@@ -52,6 +54,18 @@
     
     // 5.绘制
     CTFrameDraw(frame, context);
+     
+     */
+    
+    [super drawRect:rect];
+    CGContextRef content = UIGraphicsGetCurrentContext();
+    CGContextSetTextMatrix(content, CGAffineTransformIdentity);
+    CGContextTranslateCTM(content, 0, self.bounds.size.height);
+    CGContextScaleCTM(content, 1.0, -1.0);
+    
+    if (self.data) {
+        CTFrameDraw(self.data.ctFrame, content);
+    }
 }
 
 

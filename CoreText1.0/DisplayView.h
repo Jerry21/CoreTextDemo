@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "YYCoreTextData.h"
 
 @interface DisplayView : UIView
-
+@property (nonatomic, strong) YYCoreTextData *data; 
 @end
