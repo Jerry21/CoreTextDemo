@@ -1,0 +1,30 @@
+//
+//  PrefixHeader.pch
+//  CoreText1.0
+//
+//  Created by 叶俊有 on 2017/5/7.
+//  Copyright © 2017年 yejunyou. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PrefixHeader_pch */
+
+#ifdef DEBUG
+#define YYLog(...) NSLog(__VA_ARGS__)
+#define YYMethod() NSLog(@"%s",__func__)
+#else
+#define YYLog(...)
+#define YYMethod() 
+#endif
+
+
+#define YYRGBA(A,B,C,a) [UIColor colorWithRed:A/255.0 green:B/255.0 blue:C/255.0 alpha:a]
+#define YYRGB(A,B,C)   YYRGBA(A,B,C,1.0)
+
+#import "NSObject+FrameAdjust.h"
+#import <CoreText/CTFrame.h>
