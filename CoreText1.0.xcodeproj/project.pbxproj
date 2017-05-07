@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		758E44521EBEE406003E3ED2 /* YYCoreTextData.m in Sources */ = {isa = PBXBuildFile; fileRef = 758E44511EBEE406003E3ED2 /* YYCoreTextData.m */; };
+		758E44541EBF3ED8003E3ED2 /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 758E44531EBF3ED8003E3ED2 /* content.json */; };
+		758E44571EBF40C6003E3ED2 /* DisplayTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 758E44561EBF40C6003E3ED2 /* DisplayTextView.m */; };
+		758E445A1EBF4241003E3ED2 /* DisplayTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 758E44591EBF4241003E3ED2 /* DisplayTextField.m */; };
 		75B7B0431EBECA03008DE005 /* NSObject+FrameAdjust.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B7B0421EBECA03008DE005 /* NSObject+FrameAdjust.m */; };
 		75B7B0471EBED086008DE005 /* YYFrameParserConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B7B0461EBED086008DE005 /* YYFrameParserConfig.m */; };
 		75B7B04A1EBED0C6008DE005 /* YYFrameParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B7B0491EBED0C6008DE005 /* YYFrameParser.m */; };
@@ -23,6 +26,11 @@
 /* Begin PBXFileReference section */
 		758E44501EBEE406003E3ED2 /* YYCoreTextData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCoreTextData.h; sourceTree = "<group>"; };
 		758E44511EBEE406003E3ED2 /* YYCoreTextData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYCoreTextData.m; sourceTree = "<group>"; };
+		758E44531EBF3ED8003E3ED2 /* content.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
+		758E44551EBF40C6003E3ED2 /* DisplayTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayTextView.h; sourceTree = "<group>"; };
+		758E44561EBF40C6003E3ED2 /* DisplayTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayTextView.m; sourceTree = "<group>"; };
+		758E44581EBF4241003E3ED2 /* DisplayTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayTextField.h; sourceTree = "<group>"; };
+		758E44591EBF4241003E3ED2 /* DisplayTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayTextField.m; sourceTree = "<group>"; };
 		75B7B03E1EBEC7A0008DE005 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		75B7B0411EBECA03008DE005 /* NSObject+FrameAdjust.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+FrameAdjust.h"; sourceTree = "<group>"; };
 		75B7B0421EBECA03008DE005 /* NSObject+FrameAdjust.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+FrameAdjust.m"; sourceTree = "<group>"; };
@@ -105,6 +113,11 @@
 				75D35B081EBD4B28007B5AAA /* ViewController.m */,
 				75D35B181EBD4B3F007B5AAA /* DisplayView.h */,
 				75D35B191EBD4B3F007B5AAA /* DisplayView.m */,
+				758E44551EBF40C6003E3ED2 /* DisplayTextView.h */,
+				758E44561EBF40C6003E3ED2 /* DisplayTextView.m */,
+				758E44581EBF4241003E3ED2 /* DisplayTextField.h */,
+				758E44591EBF4241003E3ED2 /* DisplayTextField.m */,
+				758E44531EBF3ED8003E3ED2 /* content.json */,
 				75D35B0A1EBD4B28007B5AAA /* Main.storyboard */,
 				75D35B0D1EBD4B28007B5AAA /* Assets.xcassets */,
 				75D35B0F1EBD4B28007B5AAA /* LaunchScreen.storyboard */,
@@ -184,6 +197,7 @@
 				75D35B111EBD4B28007B5AAA /* LaunchScreen.storyboard in Resources */,
 				75D35B0E1EBD4B28007B5AAA /* Assets.xcassets in Resources */,
 				75D35B0C1EBD4B28007B5AAA /* Main.storyboard in Resources */,
+				758E44541EBF3ED8003E3ED2 /* content.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,6 +213,8 @@
 				75B7B04A1EBED0C6008DE005 /* YYFrameParser.m in Sources */,
 				75D35B091EBD4B28007B5AAA /* ViewController.m in Sources */,
 				75D35B1A1EBD4B3F007B5AAA /* DisplayView.m in Sources */,
+				758E44571EBF40C6003E3ED2 /* DisplayTextView.m in Sources */,
+				758E445A1EBF4241003E3ED2 /* DisplayTextField.m in Sources */,
 				758E44521EBEE406003E3ED2 /* YYCoreTextData.m in Sources */,
 				75D35B061EBD4B28007B5AAA /* AppDelegate.m in Sources */,
 				75D35B031EBD4B28007B5AAA /* main.m in Sources */,

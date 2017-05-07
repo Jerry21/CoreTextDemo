@@ -12,4 +12,6 @@
 
 @interface YYFrameParser : NSObject
 + (YYCoreTextData *)parseContent:(NSString *)contetn config:(YYFrameParserConfig *)config;
+
++ (YYCoreTextData *)parseTemplateFile:(NSString *)path config:(YYFrameParserConfig *)config;
 @end

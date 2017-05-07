@@ -11,7 +11,7 @@
 @implementation YYFrameParser
 
 // 要设置的属性
-+ (NSDictionary *)attrbutesWithConfig:(YYFrameParserConfig *)config
++ (NSDictionary *)attributesWithConfig:(YYFrameParserConfig *)config
 {
     CGFloat fontSize = config.fontSize;
     CTFontRef fonfRef = CTFontCreateWithName((CFStringRef)@"ArialMT", fontSize, NULL);
@@ -50,7 +50,7 @@
 
 + (YYCoreTextData *)parseContent:(NSString *)contetn config:(YYFrameParserConfig *)config
 {
-    NSDictionary *attrs = [self attrbutesWithConfig:config];
+    NSDictionary *attrs = [self attributesWithConfig:config];
     NSAttributedString *contetnString = [[NSAttributedString alloc] initWithString:contetn attributes:attrs];
     
     // 创建 CTFramesetterRef 实例
@@ -73,5 +73,103 @@
     CFRelease(framesetter);
     return data;
 }
+/// 以下是解析模板文件的多种实现方法,其中config都已经在file中配置好了
+// way 1 :对外接口
++ (YYCoreTextData *)parseTemplateFile:(NSString *)path config:(YYFrameParserConfig *)config
+{
+    NSAttributedString *content = [self loadTemplateFile:path config:config];
+    return [self parseAttributedContent:content config:config];
+}
+
+// way 2
++ (NSAttributedString *)loadTemplateFile:(NSString *)path config:(YYFrameParserConfig *)config
+{
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    NSMutableAttributedString * reuslt = [[NSMutableAttributedString alloc] init];
+    if (data) {
+        NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        
+        if ([array isKindOfClass:[NSArray class]]) {
+            for (NSDictionary *dict in array) {
+                NSString *type = dict[@"type"];
+                if ([type isEqualToString:@"txt"]) {
+                    NSAttributedString *as = [self parseAttributedContentFromNSDictionary:dict
+                                                                                   config:config];
+                    [reuslt appendAttributedString:as];
+                }
+            }
+        }
+    }
+    return reuslt;
+}
+
+// way 3
++ (NSAttributedString *)parseAttributedContentFromNSDictionary:(NSDictionary *)dict
+                                                        config:(YYFrameParserConfig *)config
+{
+    NSMutableDictionary *attrs = [self attributesWithConfig:config];
+    
+    // set color
+    UIColor *color = [self colorFromTemplate:dict[@"color"]];
+    if (color) {
+        attrs[NSForegroundColorAttributeName] = (__bridge id _Nullable)(color.CGColor);
+    }
+    
+    // set font size
+    CGFloat fontSize = [dict[@"size"] floatValue];
+    if (fontSize > 0) {
+        CTFontRef fontRef = CTFontCreateWithName((CFStringRef)@"ArialMT", fontSize, NULL);
+        attrs[NSFontAttributeName] = (__bridge id _Nullable)fontRef;
+        CFRelease(fontRef);
+    }
+    
+    NSString *content = dict[@"content"];
+    return [[NSAttributedString alloc] initWithString:content attributes:attrs];
+}
+
+
+// way 4
++ (UIColor *)colorFromTemplate:(NSString *)name
+{
+    if ([name isEqualToString:@"blue"]) {
+        return [UIColor blueColor];
+    }else if ([name isEqualToString:@"red"]){
+        return [UIColor redColor];
+    }else if ([name isEqualToString:@"green"]){
+        return [UIColor greenColor];
+    }else if ([name isEqualToString:@"black"]){
+        return [UIColor blackColor];
+    }else if ([name isEqualToString:@"yellow"]){
+        return [UIColor yellowColor];
+    }
+    return nil;
+}
+
+
+// way 5
++ (YYCoreTextData *)parseAttributedContent:(NSAttributedString *)content config:(YYFrameParserConfig *)config
+{
+    // 获得 CTFramesetterRef 实例
+    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)content);
+    
+    // 设置高度
+    CGSize restrictSize = CGSizeMake(config.width, CGFLOAT_MAX);
+    CGSize coreTextSize = CTFramesetterSuggestFrameSizeWithConstraints(framesetter, CFRangeMake(0, 0), nil, restrictSize, nil);
+    CGFloat textHeight = coreTextSize.height;
+    
+    // 生成 CTFrameRef 实例
+    CTFrameRef frame = [self createFrameWithFramesetter:(framesetter) config:config height:textHeight];
+    
+    // 保存数据到YYData中
+    YYCoreTextData *data = [[YYCoreTextData alloc] init];
+    data.height = textHeight;
+    data.ctFrame = frame;
+    
+    // 释放
+    CFRelease(frame);
+    CFRelease(framesetter);
+    return data;
+}
+
 
 @end
