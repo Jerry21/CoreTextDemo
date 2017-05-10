@@ -12,12 +12,18 @@
  },
  {
  "color": "black",
- "content": "邮电局再以每部电话2000元上下",
+ "content": "邮电局再以每部电话",
  "size": 16,
  "type": "txt"
  },
  {
- "color": "defalut",
+ "color": "yellow",
+ "content": "2000元上下",
+ "size": 26,
+ "type": "txt"
+ },
+ {
+ "color": "black",
  "content": "的价格向交换机厂商采购交换机(电信局机房内使用的电话转续枢纽设备，一台设备可接入数百乃至上万线电话)，而交换机的成本仅300~400元/线(一线即一部电话)。",
  "type": "txt"
  }

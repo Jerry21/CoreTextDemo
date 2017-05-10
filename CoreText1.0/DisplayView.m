@@ -14,7 +14,7 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.backgroundColor = [UIColor yellowColor];
+//    self.backgroundColor = [UIColor yellowColor];
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
