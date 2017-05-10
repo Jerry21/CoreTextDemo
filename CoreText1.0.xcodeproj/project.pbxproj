@@ -360,7 +360,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CZD89388LH;
-				GCC_PREFIX_HEADER = /Users/yejunyou/Desktop/CoreText1.0/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/yejunyou/Documents/JY_github/CoreText1.0/PrefixHeader.pch;
 				INFOPLIST_FILE = CoreText1.0/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -374,7 +374,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CZD89388LH;
-				GCC_PREFIX_HEADER = /Users/yejunyou/Desktop/CoreText1.0/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/yejunyou/Documents/JY_github/CoreText1.0/PrefixHeader.pch;
 				INFOPLIST_FILE = CoreText1.0/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
