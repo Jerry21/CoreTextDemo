@@ -13,6 +13,7 @@
 #import "YYFrameParserConfig.h"
 #import "DisplayTextView.h"
 #import "DisplayTextField.h"
+#import "ImageViewController.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet DisplayView *ctView;
@@ -23,6 +24,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self setupNotification];
+    [self setupUserInterface];
+}
+
+- (void)setupNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(imagePress:) name:YYDisplayerViewPressedNotificatioin object:nil];
+}
+
+- (void)setupUserInterface
+{
+    
     CGFloat width = [UIScreen mainScreen].bounds.size.width - 20 * 2;
     CGFloat height = [UIScreen mainScreen].bounds.size.height - 40 * 2;
     self.ctView.width = width;
@@ -40,6 +54,16 @@
     self.scrollView.frame = CGRectMake(20, 40, width, scrollViewH);
     self.ctView.frame = CGRectMake(0, 0, self.scrollView.width, data.height);
     self.scrollView.contentSize = CGSizeMake(0, data.height);
+}
+
+- (void)imagePress:(NSNotification *)noti
+{
+    NSDictionary *userInfo = noti.userInfo;
+    CoreTextImageData *imageData = userInfo[@"imageData"];
+    
+    ImageViewController *vc = [[ImageViewController alloc] init];
+    vc.image = [UIImage imageNamed:imageData.name];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 - (void)parseContentByCode

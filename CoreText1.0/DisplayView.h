@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "YYCoreTextData.h"
 
+extern NSString *const YYDisplayerViewPressedNotificatioin;
+
 @interface DisplayView : UIView
 @property (nonatomic, strong) YYCoreTextData *data; 
 @end
+
