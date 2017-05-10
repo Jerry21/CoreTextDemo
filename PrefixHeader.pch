@@ -31,3 +31,6 @@
 #import <CoreText/CTFrame.h>
 #import <CoreText/CTFont.h>
 #import <CoreText/CTFramesetter.h>
+#import <CoreText/CTRun.h>
+#import <CoreText/CTRunDelegate.h>
+#import <CoreText/CTStringAttributes.h>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		755FFB691EC2A99600639597 /* CoreTextImageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 755FFB681EC2A99600639597 /* CoreTextImageData.m */; };
 		758E44521EBEE406003E3ED2 /* YYCoreTextData.m in Sources */ = {isa = PBXBuildFile; fileRef = 758E44511EBEE406003E3ED2 /* YYCoreTextData.m */; };
 		758E44541EBF3ED8003E3ED2 /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 758E44531EBF3ED8003E3ED2 /* content.json */; };
 		758E44571EBF40C6003E3ED2 /* DisplayTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 758E44561EBF40C6003E3ED2 /* DisplayTextView.m */; };
@@ -24,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		755FFB671EC2A99600639597 /* CoreTextImageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreTextImageData.h; sourceTree = "<group>"; };
+		755FFB681EC2A99600639597 /* CoreTextImageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreTextImageData.m; sourceTree = "<group>"; };
 		758E44501EBEE406003E3ED2 /* YYCoreTextData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYCoreTextData.h; sourceTree = "<group>"; };
 		758E44511EBEE406003E3ED2 /* YYCoreTextData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYCoreTextData.m; sourceTree = "<group>"; };
 		758E44531EBF3ED8003E3ED2 /* content.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
@@ -63,6 +66,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		755FFB651EC2A32A00639597 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				75D35B071EBD4B28007B5AAA /* ViewController.h */,
+				75D35B081EBD4B28007B5AAA /* ViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		755FFB661EC2A34200639597 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				75D35B181EBD4B3F007B5AAA /* DisplayView.h */,
+				75D35B191EBD4B3F007B5AAA /* DisplayView.m */,
+				758E44551EBF40C6003E3ED2 /* DisplayTextView.h */,
+				758E44561EBF40C6003E3ED2 /* DisplayTextView.m */,
+				758E44581EBF4241003E3ED2 /* DisplayTextField.h */,
+				758E44591EBF4241003E3ED2 /* DisplayTextField.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		75B7B03F1EBEC9AE008DE005 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -72,7 +97,7 @@
 			name = Category;
 			sourceTree = "<group>";
 		};
-		75B7B0441EBED054008DE005 /* Tools */ = {
+		75B7B0441EBED054008DE005 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				75B7B0451EBED086008DE005 /* YYFrameParserConfig.h */,
@@ -81,8 +106,10 @@
 				75B7B0491EBED0C6008DE005 /* YYFrameParser.m */,
 				758E44501EBEE406003E3ED2 /* YYCoreTextData.h */,
 				758E44511EBEE406003E3ED2 /* YYCoreTextData.m */,
+				755FFB671EC2A99600639597 /* CoreTextImageData.h */,
+				755FFB681EC2A99600639597 /* CoreTextImageData.m */,
 			);
-			name = Tools;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		75D35AF51EBD4B27007B5AAA = {
@@ -105,18 +132,12 @@
 		75D35B001EBD4B28007B5AAA /* CoreText1.0 */ = {
 			isa = PBXGroup;
 			children = (
-				75B7B0441EBED054008DE005 /* Tools */,
+				755FFB661EC2A34200639597 /* View */,
+				755FFB651EC2A32A00639597 /* Controller */,
+				75B7B0441EBED054008DE005 /* Model */,
 				75B7B03F1EBEC9AE008DE005 /* Category */,
 				75D35B041EBD4B28007B5AAA /* AppDelegate.h */,
 				75D35B051EBD4B28007B5AAA /* AppDelegate.m */,
-				75D35B071EBD4B28007B5AAA /* ViewController.h */,
-				75D35B081EBD4B28007B5AAA /* ViewController.m */,
-				75D35B181EBD4B3F007B5AAA /* DisplayView.h */,
-				75D35B191EBD4B3F007B5AAA /* DisplayView.m */,
-				758E44551EBF40C6003E3ED2 /* DisplayTextView.h */,
-				758E44561EBF40C6003E3ED2 /* DisplayTextView.m */,
-				758E44581EBF4241003E3ED2 /* DisplayTextField.h */,
-				758E44591EBF4241003E3ED2 /* DisplayTextField.m */,
 				758E44531EBF3ED8003E3ED2 /* content.json */,
 				75D35B0A1EBD4B28007B5AAA /* Main.storyboard */,
 				75D35B0D1EBD4B28007B5AAA /* Assets.xcassets */,
@@ -208,6 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				755FFB691EC2A99600639597 /* CoreTextImageData.m in Sources */,
 				75B7B0471EBED086008DE005 /* YYFrameParserConfig.m in Sources */,
 				75B7B0431EBECA03008DE005 /* NSObject+FrameAdjust.m in Sources */,
 				75B7B04A1EBED0C6008DE005 /* YYFrameParser.m in Sources */,
@@ -340,6 +362,7 @@
 				DEVELOPMENT_TEAM = CZD89388LH;
 				GCC_PREFIX_HEADER = /Users/yejunyou/Desktop/CoreText1.0/PrefixHeader.pch;
 				INFOPLIST_FILE = CoreText1.0/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "From-Future.CoreText1-0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -353,6 +376,7 @@
 				DEVELOPMENT_TEAM = CZD89388LH;
 				GCC_PREFIX_HEADER = /Users/yejunyou/Desktop/CoreText1.0/PrefixHeader.pch;
 				INFOPLIST_FILE = CoreText1.0/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "From-Future.CoreText1-0";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -7,8 +7,10 @@
 //  排版类，实现文字内容的排版
 
 #import <UIKit/UIKit.h>
+#import "CoreTextImageData.h"
 
 @interface YYCoreTextData : NSObject
 @property (nonatomic, assign) CTFrameRef ctFrame;
 @property (nonatomic, assign) CGFloat height;
+@property (nonatomic, strong) NSArray *imageArray; 
 @end

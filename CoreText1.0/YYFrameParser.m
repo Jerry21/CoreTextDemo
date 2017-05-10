@@ -7,8 +7,21 @@
 //  
 
 #import "YYFrameParser.h"
+#import "CoreTextImageData.h"
 
 @implementation YYFrameParser
+
+static CGFloat ascentCallback(void *ref){
+    return [(NSNumber*)[(__bridge NSDictionary*)ref objectForKey:@"height"] floatValue];
+}
+
+static CGFloat descentCallback(void *ref){
+    return 0;
+}
+
+static CGFloat widthCallback(void* ref){
+    return [(NSNumber*)[(__bridge NSDictionary*)ref objectForKey:@"width"] floatValue];
+}
 
 // 要设置的属性
 + (NSDictionary *)attributesWithConfig:(YYFrameParserConfig *)config
@@ -50,7 +63,7 @@
 
 + (YYCoreTextData *)parseContent:(NSString *)contetn config:(YYFrameParserConfig *)config
 {
-    NSDictionary *attrs = [self attributesWithConfig:config];
+    NSDictionary *attrs = [[self attributesWithConfig:config] mutableCopy];
     NSAttributedString *contetnString = [[NSAttributedString alloc] initWithString:contetn attributes:attrs];
     
     // 创建 CTFramesetterRef 实例
@@ -77,37 +90,75 @@
 // way 1 :对外接口
 + (YYCoreTextData *)parseTemplateFile:(NSString *)path config:(YYFrameParserConfig *)config
 {
-    NSAttributedString *content = [self loadTemplateFile:path config:config];
-    return [self parseAttributedContent:content config:config];
+    NSMutableArray *imageArray = [NSMutableArray array];
+    NSAttributedString *content = [self loadTemplateFile:path config:config imageArray:imageArray];
+    YYCoreTextData *data = [self parseAttributedContent:content config:config];
+    data.imageArray = imageArray;
+    return data;
 }
 
 // way 2
-+ (NSAttributedString *)loadTemplateFile:(NSString *)path config:(YYFrameParserConfig *)config
++ (NSAttributedString *)loadTemplateFile:(NSString *)path config:(YYFrameParserConfig *)config imageArray:(NSMutableArray *)imageArray
 {
     NSData *data = [NSData dataWithContentsOfFile:path];
-    NSMutableAttributedString * reuslt = [[NSMutableAttributedString alloc] init];
+    NSMutableAttributedString * result = [[NSMutableAttributedString alloc] init];
     if (data) {
         NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
         
-        if ([array isKindOfClass:[NSArray class]]) {
-            for (NSDictionary *dict in array) {
+        if ([array isKindOfClass:[NSArray class]])
+        {
+            for (NSDictionary *dict in array)
+            {
                 NSString *type = dict[@"type"];
-                if ([type isEqualToString:@"txt"]) {
+                if ([type isEqualToString:@"txt"])
+                {
                     NSAttributedString *as = [self parseAttributedContentFromNSDictionary:dict
                                                                                    config:config];
-                    [reuslt appendAttributedString:as];
+                    [result appendAttributedString:as];
+                }
+                else if ([type isEqualToString:@"img"])
+                {
+                    CoreTextImageData *imageData = [[CoreTextImageData alloc] init];
+                    imageData.name = dict[@"name"];
+                    imageData.position = result.length;
+                    [imageArray addObject:imageData];
+                    
+                    // 创建占位符，设置 CTRunDeledata
+                    NSAttributedString *as = [self parseImageDataFromNSDictionay:dict config:config];
+                    [result appendAttributedString:as];
                 }
             }
         }
     }
-    return reuslt;
+    return result;
+}
+
++ (NSAttributedString *)parseImageDataFromNSDictionay:(NSDictionary *)dict config:(YYFrameParserConfig *)config
+{
+    CTRunDelegateCallbacks callbacks;
+    memset(&callbacks, 0, sizeof(CTRunDelegateCallbacks));
+    callbacks.version = kCTRunDelegateVersion1;
+    callbacks.getAscent = ascentCallback;
+    callbacks.getDescent = descentCallback;
+    callbacks.getWidth = widthCallback;
+    CTRunDelegateRef delegate = CTRunDelegateCreate(&callbacks, (__bridge void *)dict);
+    
+    // 使用0xFFFC作为空白占位符
+    unichar objectReplacementChar = 0xFFFC;
+    NSString *content = [NSString stringWithCharacters:&objectReplacementChar length:1];
+    NSDictionary *attr = [self attributesWithConfig:config];
+    NSMutableAttributedString *space = [[NSMutableAttributedString alloc] initWithString:content attributes:attr];
+    CFAttributedStringSetAttribute((CFMutableAttributedStringRef)space, CFRangeMake(0, 1), kCTRunDelegateAttributeName, delegate);
+    
+    CFRelease(delegate);
+    return space;
 }
 
 // way 3
 + (NSAttributedString *)parseAttributedContentFromNSDictionary:(NSDictionary *)dict
                                                         config:(YYFrameParserConfig *)config
 {
-    NSMutableDictionary *attrs = [self attributesWithConfig:config];
+    NSMutableDictionary *attrs = [[self attributesWithConfig:config] mutableCopy];
     
     // set color
     UIColor *color = [self colorFromTemplate:dict[@"color"]];

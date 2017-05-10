@@ -66,6 +66,14 @@
     if (self.data) {
         CTFrameDraw(self.data.ctFrame, content);
     }
+    
+    for (CoreTextImageData *imageData in self.data.imageArray) {
+        UIImage *image = [UIImage imageNamed:imageData.name];
+        if (image) {
+            CGContextDrawImage(content, imageData.imagePosition, image.CGImage);
+            NSLog(@"imagePosition:%@-----name:%@",NSStringFromCGRect(imageData.imagePosition),imageData.name);
+        }
+    }
 }
 
 

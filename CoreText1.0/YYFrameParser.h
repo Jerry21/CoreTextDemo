@@ -11,7 +11,12 @@
 #import "YYCoreTextData.h"
 
 @interface YYFrameParser : NSObject
-+ (YYCoreTextData *)parseContent:(NSString *)contetn config:(YYFrameParserConfig *)config;
+
+//+ (NSAttributedString *)attributesWithConfig:(YYFrameParserConfig *)config;
+
++ (YYCoreTextData *)parseContent:(NSString *)content config:(YYFrameParserConfig *)config;
+
++ (YYCoreTextData *)parseAttributeContent:(NSString *)content config:(YYFrameParserConfig *)config;
 
 + (YYCoreTextData *)parseTemplateFile:(NSString *)path config:(YYFrameParserConfig *)config;
 @end

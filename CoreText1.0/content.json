@@ -1,11 +1,17 @@
-[{
+ [{
+  "type" : "img",
+  "width" : 300,
+  "height" : 160,
+  "name" : "image1"
+  },
+  {
  "color": "blue",
  "content": "这是一个技术高速发展的时代，其中电子信息(行情 专区)行业更是一个知识高度密集、更新速度非常快的高利润行业。",
  "size": 16,
  "type": "txt"
  },
  {
- "color": "red",
+ "color": "yellow",
  "content": "上世纪90年代以前，安装电话要先向邮电局交5000~6000元,",
  "size": 22,
  "type": "txt"
@@ -17,13 +23,19 @@
  "type": "txt"
  },
  {
- "color": "yellow",
+ "color": "red",
  "content": "2000元上下",
  "size": 26,
  "type": "txt"
  },
  {
- "color": "black",
+ "type" : "img",
+ "width" : 50,
+ "height" : 32,
+ "name" : "image2"
+ },
+ {
+ "color": "default",
  "content": "的价格向交换机厂商采购交换机(电信局机房内使用的电话转续枢纽设备，一台设备可接入数百乃至上万线电话)，而交换机的成本仅300~400元/线(一线即一部电话)。",
  "type": "txt"
  }
