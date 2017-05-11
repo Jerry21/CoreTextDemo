@@ -27,7 +27,13 @@
  "content": "2000元上下",
  "size": 26,
  "type": "txt"
- },
+  },
+  {
+  "color": "default",
+  "content": "我是链接",
+  "url": "https://www.baidu.com",
+  "type": "link"
+  },
  {
  "type" : "img",
  "width" : 50,

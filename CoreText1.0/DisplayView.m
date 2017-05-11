@@ -8,6 +8,9 @@
 
 #import "DisplayView.h"
 #import <CoreText/CoreText.h>
+#import "CoreTextLinkData.h"
+#import "ClickTextLinkUtil.h"
+
 NSString *const YYDisplayerViewPressedNotificatioin = @"YYDisplayerViewPressedNotificatioin";
 
 @interface DisplayView()<UIGestureRecognizerDelegate>
@@ -66,6 +69,12 @@ NSString *const YYDisplayerViewPressedNotificatioin = @"YYDisplayerViewPressedNo
             [[NSNotificationCenter defaultCenter] postNotificationName:YYDisplayerViewPressedNotificatioin object:self userInfo:userInfo];
             break;
         }
+    }
+    
+    CoreTextLinkData *linkData = [ClickTextLinkUtil touchLinkInView:self atPoint:point data:self.data];
+    if (linkData) {
+        NSLog(@"%@",linkData.url);
+        return;
     }
 }
 

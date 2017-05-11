@@ -12,6 +12,8 @@
 		758E44541EBF3ED8003E3ED2 /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 758E44531EBF3ED8003E3ED2 /* content.json */; };
 		758E44571EBF40C6003E3ED2 /* DisplayTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 758E44561EBF40C6003E3ED2 /* DisplayTextView.m */; };
 		758E445A1EBF4241003E3ED2 /* DisplayTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 758E44591EBF4241003E3ED2 /* DisplayTextField.m */; };
+		75A7108E1EC4A0C300B2A6F7 /* CoreTextLinkData.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A7108D1EC4A0C300B2A6F7 /* CoreTextLinkData.m */; };
+		75A710911EC4A2C800B2A6F7 /* ClickTextLinkUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 75A710901EC4A2C800B2A6F7 /* ClickTextLinkUtil.m */; };
 		75B3BBBA1EC2E92F00919AE9 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B3BBB81EC2E92F00919AE9 /* ImageViewController.m */; };
 		75B3BBBB1EC2E92F00919AE9 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 75B3BBB91EC2E92F00919AE9 /* ImageViewController.xib */; };
 		75B7B0431EBECA03008DE005 /* NSObject+FrameAdjust.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B7B0421EBECA03008DE005 /* NSObject+FrameAdjust.m */; };
@@ -36,6 +38,10 @@
 		758E44561EBF40C6003E3ED2 /* DisplayTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayTextView.m; sourceTree = "<group>"; };
 		758E44581EBF4241003E3ED2 /* DisplayTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayTextField.h; sourceTree = "<group>"; };
 		758E44591EBF4241003E3ED2 /* DisplayTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisplayTextField.m; sourceTree = "<group>"; };
+		75A7108C1EC4A0C300B2A6F7 /* CoreTextLinkData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreTextLinkData.h; sourceTree = "<group>"; };
+		75A7108D1EC4A0C300B2A6F7 /* CoreTextLinkData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreTextLinkData.m; sourceTree = "<group>"; };
+		75A7108F1EC4A2C800B2A6F7 /* ClickTextLinkUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClickTextLinkUtil.h; sourceTree = "<group>"; };
+		75A710901EC4A2C800B2A6F7 /* ClickTextLinkUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClickTextLinkUtil.m; sourceTree = "<group>"; };
 		75B3BBB71EC2E92F00919AE9 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		75B3BBB81EC2E92F00919AE9 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		75B3BBB91EC2E92F00919AE9 /* ImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
@@ -116,6 +122,10 @@
 				758E44511EBEE406003E3ED2 /* YYCoreTextData.m */,
 				755FFB671EC2A99600639597 /* CoreTextImageData.h */,
 				755FFB681EC2A99600639597 /* CoreTextImageData.m */,
+				75A7108C1EC4A0C300B2A6F7 /* CoreTextLinkData.h */,
+				75A7108D1EC4A0C300B2A6F7 /* CoreTextLinkData.m */,
+				75A7108F1EC4A2C800B2A6F7 /* ClickTextLinkUtil.h */,
+				75A710901EC4A2C800B2A6F7 /* ClickTextLinkUtil.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -247,7 +257,9 @@
 				75B3BBBA1EC2E92F00919AE9 /* ImageViewController.m in Sources */,
 				758E44571EBF40C6003E3ED2 /* DisplayTextView.m in Sources */,
 				758E445A1EBF4241003E3ED2 /* DisplayTextField.m in Sources */,
+				75A710911EC4A2C800B2A6F7 /* ClickTextLinkUtil.m in Sources */,
 				758E44521EBEE406003E3ED2 /* YYCoreTextData.m in Sources */,
+				75A7108E1EC4A0C300B2A6F7 /* CoreTextLinkData.m in Sources */,
 				75D35B061EBD4B28007B5AAA /* AppDelegate.m in Sources */,
 				75D35B031EBD4B28007B5AAA /* main.m in Sources */,
 			);
@@ -370,7 +382,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CZD89388LH;
-				GCC_PREFIX_HEADER = /Users/yejunyou/Documents/JY_github/CoreText1.0/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/yejunyou/Documents/JY_Github/CoreTextDemo/PrefixHeader.pch;
 				INFOPLIST_FILE = CoreText1.0/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -384,7 +396,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = CZD89388LH;
-				GCC_PREFIX_HEADER = /Users/yejunyou/Documents/JY_github/CoreText1.0/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/yejunyou/Documents/JY_Github/CoreTextDemo/PrefixHeader.pch;
 				INFOPLIST_FILE = CoreText1.0/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

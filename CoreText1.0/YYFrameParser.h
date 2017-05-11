@@ -16,7 +16,7 @@
 
 + (YYCoreTextData *)parseContent:(NSString *)content config:(YYFrameParserConfig *)config;
 
-+ (YYCoreTextData *)parseAttributeContent:(NSString *)content config:(YYFrameParserConfig *)config;
+//+ (YYCoreTextData *)parseAttributeContent:(NSString *)content config:(YYFrameParserConfig *)config;
 
 + (YYCoreTextData *)parseTemplateFile:(NSString *)path config:(YYFrameParserConfig *)config;
 @end

@@ -8,6 +8,7 @@
 
 #import "YYFrameParser.h"
 #import "CoreTextImageData.h"
+#import "CoreTextLinkData.h"
 
 @implementation YYFrameParser
 
@@ -91,14 +92,18 @@ static CGFloat widthCallback(void* ref){
 + (YYCoreTextData *)parseTemplateFile:(NSString *)path config:(YYFrameParserConfig *)config
 {
     NSMutableArray *imageArray = [NSMutableArray array];
-    NSAttributedString *content = [self loadTemplateFile:path config:config imageArray:imageArray];
+    NSMutableArray *linkArray = [NSMutableArray array];
+    NSAttributedString *content = [self loadTemplateFile:path config:config imageArray:imageArray linkArray:linkArray];
     YYCoreTextData *data = [self parseAttributedContent:content config:config];
     data.imageArray = imageArray;
     return data;
 }
 
 // way 2
-+ (NSAttributedString *)loadTemplateFile:(NSString *)path config:(YYFrameParserConfig *)config imageArray:(NSMutableArray *)imageArray
++ (NSAttributedString *)loadTemplateFile:(NSString *)path
+                                  config:(YYFrameParserConfig *)config
+                              imageArray:(NSMutableArray *)imageArray
+                               linkArray:(NSMutableArray *)linkArray
 {
     NSData *data = [NSData dataWithContentsOfFile:path];
     NSMutableAttributedString * result = [[NSMutableAttributedString alloc] init];
@@ -126,6 +131,20 @@ static CGFloat widthCallback(void* ref){
                     // 创建占位符，设置 CTRunDeledata
                     NSAttributedString *as = [self parseImageDataFromNSDictionay:dict config:config];
                     [result appendAttributedString:as];
+                }
+                else if ([type isEqualToString:@"link"])
+                {
+                    NSUInteger startPos = result.length;
+                    NSAttributedString *as = [self parseAttributedContentFromNSDictionary:dict config:config];
+                    [result appendAttributedString:as];
+                    
+                    NSUInteger length = result.length - startPos;
+                    NSRange linkRange = NSMakeRange(startPos, length);
+                    CoreTextLinkData *linkData = [[CoreTextLinkData alloc] init];
+                    linkData.title = dict[@"content"];
+                    linkData.url = dict[@"url"];
+                    linkData.range = linkRange;
+                    [linkArray addObject:linkData];
                 }
             }
         }
